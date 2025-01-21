@@ -1,5 +1,5 @@
 import email_tools
-import web.py
+import web
 
 def main():
     pass
