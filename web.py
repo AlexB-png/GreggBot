@@ -1,8 +1,7 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
-import time
+from selenium.webdriver.firefox.options import Options
 import keyboard
 from typing import Union
 
@@ -11,6 +10,8 @@ def access_website(email) -> Union[str, int]:
     driver = None
     error: str = ""
     try:
+        options = Options()
+        options.headless = True # Run the browser in headless mode
         driver = webdriver.Firefox() # Initialize a Firefox webdriver
         driver.get("https://launch.huggg.me/super/p7iPuMm9h4lRiM9")
         driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.landing_moreInfoButton__eMFex").click()
