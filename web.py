@@ -10,7 +10,6 @@ def access_website(email):
     driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.landing_moreInfoButton__eMFex").click()
     driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB").click()
     driver.find_element(By.ID, "email").send_keys(email)
-    
-    driver.close()
-
-access_website("mario.jetullaji.469@accesscreative.ac.uk")
+    keyboard.press_and_release("enter")
+    driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.confirm_confirmButton__15iRE").click()
+    driver.close() 
