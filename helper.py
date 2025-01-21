@@ -4,7 +4,8 @@ import os
 
 def log_errors(error_message):
     try:
-        with open('error_log.json', 'a') as file:
+        log_file_path = os.path.join(os.getcwd(), 'data', 'error_log.json')
+        with open(log_file_path, 'a') as file:
             data = {
                 'timestamp': str(datetime.datetime.now()),
                 'error_message': error_message
