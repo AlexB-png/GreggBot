@@ -1,0 +1,13 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import time
+
+def open():
+    driver = webdriver.Firefox() # Initialize a Firefox webdriver
+    driver.get("https://10minutemail.com/")
+    driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.landing_moreInfoButton__eMFex").click()
+    driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB").click()
+    driver.find_element(By.ID, "email").send_keys(email)
+    
+    driver.close()
