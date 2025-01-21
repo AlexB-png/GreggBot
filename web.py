@@ -6,7 +6,7 @@ import time
 def access_website():
     driver = webdriver.Firefox() # Initialize a Firefox webdriver
     driver.get("https://launch.huggg.me/super/p7iPuMm9h4lRiM9")
-    html = browser.page_source
+    html = driver.page_source
     print(html)
     browser.close()
 
