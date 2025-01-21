@@ -4,9 +4,12 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 import time
 import keyboard
+from typing import Union
 
-def access_website(email):
+
+def access_website(email) -> Union[str, int]:
     driver = None
+    error: str = ""
     try:
         driver = webdriver.Firefox() # Initialize a Firefox webdriver
         driver.get("https://launch.huggg.me/super/p7iPuMm9h4lRiM9")
@@ -17,16 +20,19 @@ def access_website(email):
         driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.confirm_confirmButton__15iRE").click()
         driver.close()
     except NoSuchElementException as e:
-        print(f"Error: Element not found. {e}")
+        error: str = f"Element not found. {e}"
     except TimeoutException as e:
-        print(f"Error: The operation timed out. {e}")
+        error: str = f"Webpage timed out. {e}"
     except WebDriverException as e:
-        print(f"Error: WebDriver issue occurred. {e}")
+        error: str = f"A WebDriver error occurred. {e}"
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        error: str = f"An unexpected error occurred. {e}"
     finally:
         # Ensure the driver is closed properly
         if driver:
             driver.close()
+            return 0
+        else:
+            return error
 
 access_website("your_email@example.com")
