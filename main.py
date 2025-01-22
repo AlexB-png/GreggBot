@@ -1,6 +1,6 @@
 from typing import Union
-import email_tools
 import web
+import email_tools
 import helper
 
 def main():
@@ -8,7 +8,7 @@ def main():
 
     # Imported function to generate email goes here
 
-    email: None = None # Boilerplate to avoid param error
+    email = "test@gmail.co" # Boilerplate to avoid param error
     result: Union[str, int] = web.access_website(email)
     if result != 0:
         if not helper.log_errors(result):
@@ -20,7 +20,6 @@ def main():
     if result != 0:
         if not helper.log_errors(result):
             print("Failed to log error")
-
 
 if __name__ == "__main__":
     main()
