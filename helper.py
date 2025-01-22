@@ -3,6 +3,7 @@ import datetime
 import os
 
 def log_errors(error_message):
+    # Later on, we should add code to email the error to users and notify us about the error
     try:
         log_file_path = os.path.join(os.getcwd(), 'data', 'error_log.json')
         with open(log_file_path, 'a') as file:
