@@ -30,7 +30,7 @@ def access_website(email) -> Union[str, int]:
         error: str = f"An unexpected error occurred. {e}"
     finally:
         # Ensure the driver is closed properly
-        if driver:
+        if driver and error == "":  # If no error occurred, close the driver and return 0:
             driver.close()
             return 0
         else:

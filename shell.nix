@@ -8,6 +8,7 @@ in pkgs.mkShell {
       python-pkgs.selenium
       python-pkgs.keyboard
       python-pkgs.requests
+      # python-pkgs.mailersend
     ]))
 
     # Other

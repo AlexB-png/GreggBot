@@ -14,5 +14,13 @@ def main():
         if not helper.log_errors(result):
             print("Failed to log error")
 
+    # Function to get link from email goes here
+
+    result: Union[str, int] = email_tools.Mailer()
+    if result != 0:
+        if not helper.log_errors(result):
+            print("Failed to log error")
+
+
 if __name__ == "__main__":
     main()
