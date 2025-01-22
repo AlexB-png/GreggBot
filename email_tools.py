@@ -3,6 +3,7 @@ import ssl
 import requests
 from mailersend import emails
 from typing import Union
+import helper
 
 # Placeholder data before the mailing list DB is created
 mailing_list = [
@@ -60,6 +61,9 @@ def Mailer() -> Union[int, str]:
             break
 
     # Return 0 if no error, otherwise return the error message
-    return 0 if error == "" else error
+    if error == "":
+        return 1
+    return error
+
 
 Mailer()

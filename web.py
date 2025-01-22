@@ -4,6 +4,7 @@ from selenium.common.exceptions import *
 from selenium.webdriver.firefox.options import Options
 import keyboard
 from typing import Union
+import helper
 
 
 def access_website(email) -> Union[str, int]:
@@ -34,6 +35,6 @@ def access_website(email) -> Union[str, int]:
             driver.close()
             return 0
         else:
+            if driver:
+                driver.close()
             return error
-
-access_website("your_email@example.com")
