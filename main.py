@@ -22,4 +22,13 @@ def main():
             print("Failed to log error")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ModuleNotFoundError as e:
+        helper.log_errors(f"Module not found error: {e}")
+    except TypeError as e:
+        helper.log_errors(f"Type error: {e}")
+    except ValueError as e:
+        helper.log_errors(f"Value error: {e}")
+    except Exception as e:
+        helper.log_errors(f"An unexpected error occurred: {e}")
