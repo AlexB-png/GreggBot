@@ -1,11 +1,8 @@
-import json
+import pathlib
 import datetime
+import json
+from json import JSONDecodeError
 import os
-import pathlib
-
-import pathlib
-import datetime
-import json
 
 
 def log_errors(error_message):
@@ -25,9 +22,11 @@ def log_errors(error_message):
             json.dump(error_logs, file, indent=4)
 
         return True
+    except JSONDecodeError as e:
+        print(f"Error decoding JSON file: {e}")
     except Exception as e:
-        print(f"An error occurred while trying to log errors: {e}")
-        return False
+        print(f"An unexpected error occurred while logging errors: {e}")
+    return False
 
 
 def setup():
