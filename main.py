@@ -1,20 +1,27 @@
 from typing import Union
 import web
+import email_generation
 import email_tools
 import helper
+import mailslurp_client
 
 def main():
     helper.setup() # Function to set up data folder goes here
 
-    # Imported function to generate email goes here
 
-    email = "test@gmail.co" # Boilerplate to avoid param error
+    email = email_generation.CreateEmail("mainL")
+
+    #email = "test@gmail.co" # Boilerplate to avoid param error
     result: Union[str, int] = web.access_website(email)
     if result != 0:
         if not helper.log_errors(result):
             print("Failed to log error")
-
-    # Function to get link from email goes here
+            
+            
+    print("wow")
+    result: Union[str, int] = email_generation.ParseLink(email)
+    
+    print(Union)
 
     result: Union[str, int] = email_tools.Mailer()
     if result != 0:
