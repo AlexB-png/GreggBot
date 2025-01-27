@@ -7,7 +7,7 @@ import os
 
 def log_errors(error_message):
     try:
-        log_file_path = pathlib.Path("data") / "error_log.json"
+        log_file_path = pathlib.Path("../data") / "error_log.json"
         if log_file_path.exists():
             with open(log_file_path, 'r') as file:
                 error_logs = json.load(file)
