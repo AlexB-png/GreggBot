@@ -180,4 +180,4 @@ cython_debug/
 data
 
 # Cache
-src/__pycache__
+modules/__pycache__
