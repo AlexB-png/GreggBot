@@ -27,6 +27,7 @@ def get_email_input():
                 data[key] = {}
                 data[key]["email"] = email
                 data[key]["uses"] = 0
+            json.dump(data, file, indent=4)
             
     else:
         print("idk what has gone wrong but something has")
