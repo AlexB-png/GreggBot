@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gregg bot</title>
@@ -10,7 +10,7 @@
     <div align="center">
         <h1>gregg bot</h1>
 
-        <form action="./main.py" method="post" id="email">
+        <form action="/email_input" method="post" id="email">
             <label for="email">add email:</label>
             <input type="email" id="email" name="email">
             <input type="submit">
