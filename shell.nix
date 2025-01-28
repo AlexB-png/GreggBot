@@ -10,9 +10,11 @@ in pkgs.mkShell {
       python-pkgs.requests
       python-pkgs.flask
       python-pkgs.schedule
+      python-pkgs.pyngrok
     ]))
 
     # Other
     pkgs.firefox
+    pkgs.nginx
   ];
 }
