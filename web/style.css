@@ -1,0 +1,17 @@
+html {
+    background: rgb(0,89,142);
+    background: linear-gradient(126deg, rgba(0,89,142,1) 0%, rgba(255,247,233,1) 100%);
+}
+
+div {
+    background-color: #fff7e9;
+}
+
+h1 {
+    background-color: #fff7e9;
+    color: #00598E;
+}
+
+button {
+    background-color: #FFB227;
+}
