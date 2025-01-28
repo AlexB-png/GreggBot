@@ -39,7 +39,7 @@ def run_tasks():
 
 def start_flask():
     # Enables us to run the flask app in a separate thread
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
 
 def check_directories():
     current_dir = Path.cwd()
