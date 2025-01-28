@@ -13,10 +13,9 @@ def main():
     if not data_path.exists():
         helper.setup() # Function to set up data folder goes here
         helper.setup_emails()
-
     path = Path(data_path / "emails.json")
-    
     with open(path, "r") as f:
+ 
         data = json.load(f)
         print(data)
         for dict in data:
@@ -28,10 +27,12 @@ def main():
             temp[0] += f"+{uses+1}"
             email_new = "@".join(temp)
             print(email_new)
+            
             result: Union[str, int] = web.access_website(email_new)
             if result != 0:
                 if not helper.log_errors(result):
                     print("Failed to log error")
+                    
     with open(path, "w") as f:
         json.dump(data, f)
                     
