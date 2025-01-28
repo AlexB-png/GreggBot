@@ -4,6 +4,8 @@ import helper
 import json
 import pathlib
 from pathlib import Path
+import datetime
+import time
 
 def main():
     current_dir = Path.cwd()
@@ -34,11 +36,11 @@ def main():
                     print("Failed to log error")
                     
     with open(path, "w") as f:
-        json.dump(data, f)
+        json.dump(data, f, indent=4)
                     
 
     # Function to get link from email goes here
 
 if __name__ == "__main__":
-    main()
-    
+    while True:
+        main()
