@@ -15,6 +15,7 @@ def main():
         helper.setup_emails()
 
     path = Path(data_path / "emails.json")
+    
     with open(path, "r") as f:
         data = json.load(f)
         print(data)
@@ -23,16 +24,17 @@ def main():
             email = data[dict]["email"]
             uses = data[dict]["uses"]
             temp = email.split("@")
-            uses = 5
-            data[dict]["uses"] += 5
-            temp[0] += f"+3835"
+            data[dict]["uses"] += 1
+            temp[0] += f"+{uses+1}"
             email_new = "@".join(temp)
             print(email_new)
-
             result: Union[str, int] = web.access_website(email_new)
             if result != 0:
                 if not helper.log_errors(result):
                     print("Failed to log error")
+    with open(path, "w") as f:
+        json.dump(data, f)
+                    
 
     # Function to get link from email goes here
 
