@@ -1,23 +1,23 @@
 from typing import Union
-import web
-import helper
+import src.web_tools as web_tools
+import src.helper as helper
 import json
 import pathlib
 from pathlib import Path
 import datetime
 import time
+from web.inputs import app
 
 def main():
     current_dir = Path.cwd()
-    parent_dir = current_dir.parent
-    data_path = Path(parent_dir / "data")
+    data_path = Path(current_dir / "data")
     print("got path")
     if not data_path.exists():
         helper.setup() # Function to set up data folder goes here
         helper.setup_emails()
     path = Path(data_path / "emails.json")
     with open(path, "r") as f:
- 
+
         data = json.load(f)
         print(data)
         for dict in data:
@@ -30,7 +30,7 @@ def main():
             email_new = "@".join(temp)
             print(email_new)
             
-            result: Union[str, int] = web.access_website(email_new)
+            result: Union[str, int] = web_tools.access_website(email_new)
             if result != 0:
                 if not helper.log_errors(result):
                     print("Failed to log error")
@@ -42,5 +42,6 @@ def main():
     # Function to get link from email goes here
 
 if __name__ == "__main__":
-    while True:
+    #while True:
+        #app.run()
         main()
