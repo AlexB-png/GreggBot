@@ -2,10 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from selenium.webdriver.firefox.options import Options
-import keyboard
 from typing import Union
-import helper
-
 
 def access_website(email) -> Union[str, int]:
     driver = None
@@ -17,10 +14,10 @@ def access_website(email) -> Union[str, int]:
         driver.get("https://launch.huggg.me/super/p7iPuMm9h4lRiM9")
         driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.landing_moreInfoButton__eMFex").click()
         driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB").click()
-        driver.find_element(By.ID, "email").send_keys(email)
-        keyboard.press_and_release("enter")
+        email_field = driver.find_element(By.ID, "email") # Create a variable for the email field
+        email_field.send_keys(email)
+        email_field.submit() # Submit the email
         driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.confirm_confirmButton__15iRE").click()
-        driver.close()
     except NoSuchElementException as e:
         error: str = f"Element not found. {e}"
     except TimeoutException as e:
