@@ -18,7 +18,6 @@ def access_website(email) -> Union[str, int]:
         email_field.send_keys(email)
         email_field.submit() # Submit the email
         driver.find_element(By.CSS_SELECTOR, ".button-module_button__WDVlB.confirm_confirmButton__15iRE").click()
-        driver.close()
     except NoSuchElementException as e:
         error: str = f"Element not found. {e}"
     except TimeoutException as e:

@@ -1,34 +1,41 @@
 from typing import Union
 import web
-import email_tools
 import helper
+import json
+import pathlib
+from pathlib import Path
 
 def main():
-    helper.setup() # Function to set up data folder goes here
+    current_dir = Path.cwd()
+    parent_dir = current_dir.parent
+    data_path = Path(parent_dir / "data")
+    print("got path")
+    if not data_path.exists():
+        helper.setup() # Function to set up data folder goes here
+        helper.setup_emails()
 
-    # Imported function to generate email goes here
+    path = Path(data_path / "emails.json")
+    with open(path, "r") as f:
+        data = json.load(f)
+        print(data)
+        for dict in data:
+            print("Should get email")
+            email = data[dict]["email"]
+            uses = data[dict]["uses"]
+            temp = email.split("@")
+            uses = 5
+            data[dict]["uses"] += 5
+            temp[0] += f"+3835"
+            email_new = "@".join(temp)
+            print(email_new)
 
-    email = "test@gmail.co" # Boilerplate to avoid param error
-    result: Union[str, int] = web.access_website(email)
-    if result != 0:
-        if not helper.log_errors(result):
-            print("Failed to log error")
+            result: Union[str, int] = web.access_website(email_new)
+            if result != 0:
+                if not helper.log_errors(result):
+                    print("Failed to log error")
 
     # Function to get link from email goes here
 
-    result: Union[str, int] = email_tools.Mailer()
-    if result != 0:
-        if not helper.log_errors(result):
-            print("Failed to log error")
-
 if __name__ == "__main__":
-    try:
-        main()
-    except ModuleNotFoundError as e:
-        helper.log_errors(f"Module not found error: {e}")
-    except TypeError as e:
-        helper.log_errors(f"Type error: {e}")
-    except ValueError as e:
-        helper.log_errors(f"Value error: {e}")
-    except Exception as e:
-        helper.log_errors(f"An unexpected error occurred: {e}")
+    main()
+    
