@@ -36,13 +36,13 @@ def log_errors(error_message):
 def setup_emails():
     try: 
         current_dir = Path.cwd()
-        with open (Path(current_dir / "data" / "emails.json"),"w") as f:
+        with open (Path(current_dir / "web" / "static" / "emails.json"), "a") as f:
             data = {}
-            f.dumps(data)
+            json.dump(data, f)
     except Exception as e:
         error = f"An uexpected error occured: {e}"
         log_errors(error)
-    return Path(current_dir / "data" / "emails.json")
+    return Path(current_dir / "web" / "static" / "emails.json")
 
     
 
